@@ -26,7 +26,7 @@ module DocxTemplater
 
     def copy_or_template(entry_name, f)
       # Inside the word document archive is one file with contents of the actual document. Modify it.
-      return template_processor.render(f.read) if entry_name == 'word/document.xml'
+      return template_processor.render(f.read) if entry_name =~ /word\/(document|header\d+|footer\d+)\.xml/
       f.read
     end
 
